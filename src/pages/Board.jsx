@@ -1,49 +1,58 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { v4 as uuid } from 'uuid'
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import './Board.scss'
 
 import TaskList from '../components/taskList/TaskList';
 import Task from '../components/task/Task';
 
-const Board = () => {
-  const [backlogTasks, setBacklogTasks] = useState([])
-  const [readyTasks, setReadyTasks] = useState([])
-  const [inProgressTasks, setInProgressTasks] = useState([])
-  const [finishedTasks, setFinishedTasks] = useState([])
+const Board = ({ sendDataToParent }) => {
+  const [tasks, setTasks] = useState({
+    backlog: [],
+    ready: [],
+    inProgress: [],
+    finish: [],
 
-  const [backlogList, setBacklogList] = useState([]);
+  })
+
+  const sendData = () => {
+    const data = {
+      backlogCount: tasks.backlog.length,
+      finishCount: tasks.finish.length,
+    }
+    sendDataToParent(data)
+  }
+
+  useEffect(() => {
+    sendData()
+  }, [tasks])
+
   const [newTaskTitle, setNewTaskTitle] = useState('');
+
   const [isInput, setIsInput] = useState(false)
 
   const handleTaskDrop = (taskId, targetList) => {
-    const taskToMove = backlogTasks.find(task => task.id === taskId);
+    setTasks(prevTasks => {
+      console.log(prevTasks, taskId);
+      console.log(targetList);
+      const updatedTasks = { ...prevTasks };
 
-    switch (targetList) {
-      case 'ready':
-        setReadyTasks([...readyTasks, taskToMove]);
-        break;
-      case 'inProgress':
-        setInProgressTasks([...inProgressTasks, taskToMove]);
-        break;
-      case 'finished':
-        setFinishedTasks([...finishedTasks, taskToMove]);
-        break;
-      default:
-        break;
-    }
 
-    const updatedBacklogTasks = backlogTasks.filter(task => task.id !== taskId);
-    setBacklogTasks(updatedBacklogTasks);
+      const taskToMoveIndex = updatedTasks[targetList].find(task => task.id === taskId);
+
+      if (taskToMoveIndex !== -1) {
+        updatedTasks[targetList] = updatedTasks[targetList].filter(task => task.id !== taskId);
+      }
+      return updatedTasks;
+    });
   };
 
   const handleAddTask = (e) => {
-    console.log('sdsds')
     e.preventDefault();
     if (newTaskTitle.trim() !== '') {
       const newTask = { id: uuid(), title: newTaskTitle };
-      setBacklogList([...backlogList, newTask]);
+      const updatedTasks = { ...tasks, backlog: [...tasks.backlog, newTask] }
+      setTasks(updatedTasks)
       setNewTaskTitle('');
     }
   };
@@ -53,33 +62,47 @@ const Board = () => {
       <div className='Board'>
         <div className="container">
           <div className="board__wrapper">
-            <TaskList title="Backlog" tasks={backlogList} onTaskDrop={handleTaskDrop}>
-              {backlogList.map(task => {
+            <TaskList title="Backlog" tasks={tasks.backlog} onTaskDrop={handleTaskDrop}>
+              {tasks.backlog.map(task =>
                 <Task key={task.id} id={task.id} title={task.title} />
-              })}
+              )}
               <form className='form' onSubmit={handleAddTask}>
-                {isInput && <input className='board__input'
+                {isInput && <input
+                  className='board__input'
                   type="text"
                   value={newTaskTitle}
                   onChange={(e) => setNewTaskTitle(e.target.value)}
-                  placeholder="_______________________"
-                />}
-                {isInput ? <button className='submit-btn' type="submit" onClick={() => setIsInput(!isInput)}>Submit</button> :
-                  <button onClick={() => setIsInput(!isInput)} className='add__card-btn' type="submit">Add Task</button>}
+                  placeholder="_______________________" />
+                }
+                {
+                  isInput ? <button
+                    disabled={newTaskTitle.length < 1}
+                    className={` submit-btn  ${newTaskTitle.length < 1 ? "disabled" : ""}`}
+                    type="submit"
+                    onClick={() => setIsInput(!isInput)}>
+                    Submit
+                  </button> :
+                    <button
+                      onClick={() => setIsInput(!isInput)}
+                      className='add__card-btn'
+                      type="submit">
+                      Add Card
+                    </button>
+                }
               </form>
             </TaskList>
-            <TaskList title="Ready" tasks={readyTasks} onTaskDrop={handleTaskDrop}>
-              {readyTasks.map(task => (
+            <TaskList title="Ready" tasks={tasks.ready} onTaskDrop={handleTaskDrop}>
+              {tasks.ready.map(task => (
                 <Task key={task.id} id={task.id} title={task.title} />
               ))}
             </TaskList>
-            <TaskList title="InProgress" tasks={inProgressTasks} onTaskDrop={handleTaskDrop}>
-              {inProgressTasks.map(task => (
+            <TaskList title="InProgress" tasks={tasks.inProgress} onTaskDrop={handleTaskDrop}>
+              {tasks.inProgress.map(task => (
                 <Task key={task.id} id={task.id} title={task.title} />
               ))}
             </TaskList>
-            <TaskList title="Finished" tasks={finishedTasks} onTaskDrop={handleTaskDrop}>
-              {finishedTasks.map(task => (
+            <TaskList title="Finished" tasks={tasks.finish} onTaskDrop={handleTaskDrop}>
+              {tasks.finish.map(task => (
                 <Task key={task.id} id={task.id} title={task.title} />
               ))}
             </TaskList>

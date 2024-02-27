@@ -34,5 +34,215 @@ code {
   max-width: 1235px;
   width: 100%;
   margin: 0 auto;
+  border: 1px solid #000;
+}
 
+.app-home {
+  background-color: $accent-light-blue;
+  flex: 1 0 auto;
+
+}
+
+.header {
+
+  background-color: $accent-blue;
+  font-family: $primary-fonts;
+}
+
+.header__wrapper {
+  padding: 11px 16px 18px 20px;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+
+}
+
+.header__logo {
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 33px;
+  color: $primary-color;
+
+  transition: text-shadow .2s ease-in-out;
+
+  &:hover {
+    text-shadow: 0px 3px 15px rgba(0, 121, 191, 0.2);
+  }
+}
+
+.user__menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.user__logo {
+  width: 40px;
+  height: 40px;
+  border: 3px solid $primary-color;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  background-color: $primary-color;
+
+}
+
+.user__btn {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.user__dropdown {
+  min-width: 134px;
+  padding: 8px;
+  background-color: $primary-color;
+  border-radius: 5px;
+  list-style: none;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  border: 1px solid #000;
+}
+
+.user__item {
+  padding-bottom: 5px;
+}
+
+.user__link {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0%;
+  color: $second-color;
+  text-decoration: none;
+}
+
+.tasks__list {
+  border-radius: 10px;
+  background: rgb(235, 236, 240);
+  padding: 12px;
+  width: 25%;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21px;
+  color: $second-color;
+  margin-bottom: 15px;
+}
+
+.task {
+  border-radius: 5px;
+  background: $primary-color;
+  color: $second-color;
+
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.task__title {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21px;
+  word-wrap: break-word;
+}
+
+
+.Board {
+  background-color: $accent-light-blue;
+  flex: 1 0 auto;
+  padding: 11px 16px 18px 20px;
+
+
+}
+
+.board__wrapper {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 24px;
+}
+
+.board__input {
+  padding: 7px 13px;
+  background-color: $primary-color;
+  border: none;
+  max-width: 100%;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21px;
+  border-radius: 5px;
+
+  &::placeholder {
+    color: $gray;
+  }
+}
+
+.add__card-btn {
+  background-color: inherit;
+  border: none;
+  color: #5E6C84;
+  padding-left: 20px;
+  position: relative;
+  cursor: pointer;
+  margin-top: 12px;
+
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    width: 14px;
+    height: 14px;
+    background: url('../public/img/icons/add-card.svg') center/contain no-repeat;
+  }
+}
+
+.submit-btn {
+  background-color: $accent-blue;
+  color: $primary-color;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21px;
+  padding: 4px 10px;
+  border: none;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+.disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+
+.footer {
+  background-color: $accent-blue;
+}
+
+.footer__wrapper {
+  margin-top: auto;
+  background-color: $accent-blue;
+  padding: 11px 16px 18px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.result__wrapper {
+  display: flex;
+  column-gap: 36px;
+}
+
+.result__item,
+.about {
+  color: $primary-color;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21px;
 }
