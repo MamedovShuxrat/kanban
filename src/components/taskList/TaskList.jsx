@@ -1,19 +1,13 @@
-import React from 'react';
-import { useDrop } from 'react-dnd';
 
-function TaskList({ title, onTaskDrop, children }) {
-    const [, drop] = useDrop({
-        accept: "TASK",
-        drop(item, monitor) {
-            onTaskDrop(item.id, title);
-        },
-    });
+import React from 'react';
+
+function TaskList({ title, children }) {
+
 
     return (
-        <div ref={drop} className="tasks__list">
+        <div className="tasks__list">
             <h3 className='title' >{title}</h3>
             {title === 'Backlog' && children}
-
         </div>
     );
 }

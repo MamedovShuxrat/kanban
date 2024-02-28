@@ -1,16 +1,17 @@
-import { useDrag } from 'react-dnd';
-
+import React from "react";
+import { useSortable } from "@dnd-kit/sortable";
 const Task = ({ id, title }) => {
-    const [{ isDragging }, drag] = useDrag({
-        type: 'TASK',
-        item: { id },
-        collect: (monitor) => ({
-            isDragging: monitor.isDragging(),
-        }),
-    });
+    console.log(id);
+    const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: id })
 
     return (
-        <div ref={drag} className={`task ${isDragging ? 'dragging' : ''}`}>
+        <div
+            ref={setNodeRef}
+            style={{ transform, transition }}
+            {...attributes}
+            {...listeners}
+            className="task"
+        >
             <h2 className="task__title">{title}</h2>
         </div>
     );
