@@ -16,13 +16,13 @@ $primary-fonts: 'Roboto';
 
 }
 
+ul {
+  list-style: none;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: $primary-fonts;
 }
 
 code {
@@ -34,7 +34,6 @@ code {
   max-width: 1235px;
   width: 100%;
   margin: 0 auto;
-  border: 1px solid #000;
 }
 
 .app-home {
@@ -104,7 +103,6 @@ code {
   position: absolute;
   top: 50px;
   right: 0;
-  border: 1px solid #000;
 }
 
 .user__item {
@@ -125,6 +123,46 @@ code {
   background: rgb(235, 236, 240);
   padding: 12px;
   width: 25%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.tasks__wrapper {
+  height: 500px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #999;
+  }
+
+  &::-webkit-scrollbar-corner {
+    display: none;
+  }
+
+  &::-webkit-resizer {
+    display: none;
+  }
 }
 
 .title {
@@ -166,19 +204,35 @@ code {
   column-gap: 24px;
 }
 
-.board__input {
-  padding: 7px 13px;
+.board__input_wrapper {
   background-color: $primary-color;
+  border-radius: 5px;
+  margin: 10px 0;
+
+}
+
+.board__input {
+  display: block;
+  width: 100%;
   border: none;
-  max-width: 100%;
+  padding: 10px 13px;
+
+  background-color: $primary-color;
   font-size: 18px;
   font-weight: 400;
   line-height: 21px;
-  border-radius: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+  outline: none;
+  overflow-wrap: break-word;
 
   &::placeholder {
-    color: $gray;
+    font-size: 12px;
+    color: $second-color;
   }
+}
+
+.form {
+  margin-top: auto;
 }
 
 .add__card-btn {
@@ -245,4 +299,19 @@ code {
   font-size: 18px;
   font-weight: 400;
   line-height: 21px;
+}
+
+.select__wrapper {
+  margin-top: auto;
+  width: 100%;
+}
+
+.task {
+  width: 100%;
+  border: none;
+}
+
+.task__title {
+  border: none;
+
 }
