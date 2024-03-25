@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Header = () => {
-    const [isOpen, setIsopen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false)
 
     const openUserMenu = () => {
-        setIsopen(!isOpen)
+        setIsOpen(!isOpen)
     }
     return (
         <header className='header'>

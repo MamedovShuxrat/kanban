@@ -1,32 +1,36 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { v4 as uuid } from 'uuid'
+
 
 const TaskCreationForm = ({ onSubmit }) => {
     const [isEditInput, setIsEditInput] = useState(false)
-    const [newTaskTitle, setNewTaskTitle] = useState('');
+    const [newTaskTitle, setNewTaskTitle] = useState('')
+    const inputRef = useRef(null)
 
-    // подумать про функцию resetForm
     const resetForm = () => {
-        setNewTaskTitle('');
+        setNewTaskTitle('')
     }
 
+    useEffect(() => {
+        if (isEditInput) {
+            inputRef.current.focus()
+        }
+    }, [isEditInput])
+
     const handleAddTask = (e) => {
-        e.preventDefault();
+        e.preventDefault()
 
         if (newTaskTitle.trim() === '') {
-            return;
+            return
         }
         const newTask = {
             id: uuid(),
             title: newTaskTitle,
-            type: 'Backlog',
             descriptions: 'This task has no description'
-        };
-        console.log(newTask);
-
-        onSubmit(newTask);
-        resetForm();
-    };
+        }
+        onSubmit(newTask)
+        resetForm()
+    }
 
     return (
         < >
@@ -34,6 +38,7 @@ const TaskCreationForm = ({ onSubmit }) => {
                 {isEditInput &&
                     <label className='board__input_wrapper'>
                         <input
+                            ref={inputRef}
                             className='board__input'
                             type="text"
                             value={newTaskTitle}
