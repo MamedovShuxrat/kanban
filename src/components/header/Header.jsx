@@ -21,10 +21,10 @@ const Header = () => {
                         <img alt='icon-logo' onClick={openUserMenu} src={isOpen ? '/img/icons/arrow-up.svg' : '/img/icons/arrow-down.svg'} className='user__btn' />
                         {isOpen && <ul className="user__dropdown">
                             <li className="user__item">
-                                <a href="#" className="user__link">Profile</a>
+                                <span className="user__link">Profile</span>
                             </li>
                             <li className="user__item">
-                                <a href="#" className="user__link">Log Out</a>
+                                <span className="user__link">Log Out</span>
                             </li>
                         </ul>}
                     </div>
