@@ -1,5 +1,5 @@
 import React from "react"
-import Task from "../Task/Task"
+import Task from "../TaskComponent/Task"
 
 const TasksList = ({ title, tasks, children }) => {
     return (

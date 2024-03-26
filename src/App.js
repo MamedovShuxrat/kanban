@@ -3,9 +3,9 @@ import { Route, Routes } from 'react-router-dom'
 
 import HeaderComponent from './components/HeaderComponent/HeaderComponent'
 import BoardPage from './pages/BoardPage'
-import Footer from './components/Footer/Footer'
+import Footer from './components/FooterComponent/Footer'
 import TaskDetailPage from './pages/TaskDetailPage'
-import TasksList from './components/TasksList/TasksList'
+import TasksList from './components/TasksListComponent/TasksList'
 import TaskCreationForm from './components/TaskCreationForm'
 import AddSelectTask from './components/AddSelectTask'
 
