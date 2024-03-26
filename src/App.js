@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
-import HeaderComponent from './components/Header/HeaderComponent'
+import HeaderComponent from './components/HeaderComponent/HeaderComponent'
 import BoardPage from './pages/BoardPage'
 import Footer from './components/Footer/Footer'
 import TaskDetailPage from './pages/TaskDetailPage'
