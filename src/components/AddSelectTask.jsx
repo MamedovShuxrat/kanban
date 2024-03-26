@@ -24,7 +24,7 @@ const AddSelectTask = ({ tasks, onMoveItem }) => {
                     disabled={tasks.length < 1}
                     onClick={() => setIsAddSelect(!isAddSelect)}
                     className={`add__card-btn  ${tasks.length < 1 ? "disabled" : ""}`}
-                    type="submit">
+                    type="button">
                     Add Card
                 </button>)}
 
