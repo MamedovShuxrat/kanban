@@ -97,6 +97,7 @@ code {
 .user__btn {
   cursor: pointer;
   margin-left: 10px;
+  padding: 5px;
 }
 
 .user__dropdown {
@@ -114,7 +115,7 @@ code {
     position: absolute;
     content: '';
     top: -7px;
-    right: 30px;
+    right: 40px;
     width: 20px;
     height: 20px;
     background: center / cover no-repeat url('../public/img/icons/userBlock.svg');
