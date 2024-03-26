@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-const Header = () => {
+const HeaderComponent = () => {
     const [isOpen, setIsOpen] = useState(false)
 
     const openUserMenu = () => {
@@ -35,4 +35,4 @@ const Header = () => {
     )
 }
 
-export default Header
+export default HeaderComponent

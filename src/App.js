@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
-import Header from './components/Header/Header'
+import HeaderComponent from './components/Header/HeaderComponent'
 import BoardPage from './pages/BoardPage'
 import Footer from './components/Footer/Footer'
 import TaskDetailPage from './pages/TaskDetailPage'
@@ -79,7 +79,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <HeaderComponent />
       <Routes>
         <Route path="/" element={
           <BoardPage >
