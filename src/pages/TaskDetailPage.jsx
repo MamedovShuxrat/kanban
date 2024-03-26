@@ -37,7 +37,7 @@ const TaskDetailPage = ({ backlogTasks, readyTasks, inProgressTasks, finishedTas
         <textarea className='task__textarea' value={editedDescriptions} onChange={handleDescriptionsChange} />
       ) : (
         <div className="task">
-          <p className="task__title" onClick={() => setIsEditing(true)}>
+          <p className="task__title " onClick={() => setIsEditing(true)}>
             {task.descriptions}
           </p>
         </div>
