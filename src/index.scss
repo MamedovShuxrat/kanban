@@ -110,6 +110,16 @@ code {
   right: 0;
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
 
+  &::before {
+    position: absolute;
+    content: '';
+    top: -7px;
+    right: 30px;
+    width: 20px;
+    height: 20px;
+    background: center / cover no-repeat url('../public/img/icons/userBlock.svg');
+  }
+
 }
 
 .user__item {
