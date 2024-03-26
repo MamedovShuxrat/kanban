@@ -18,7 +18,7 @@ const Header = () => {
                         <div className="user__logo">
                             <img src="/img/user.svg" alt="user-avatar" className="user__img" />
                         </div>
-                        <img onClick={openUserMenu} src={isOpen ? '/img/icons/arrow-up.svg' : '/img/icons/arrow-down.svg'} className='user__btn' />
+                        <img alt='icon-logo' onClick={openUserMenu} src={isOpen ? '/img/icons/arrow-up.svg' : '/img/icons/arrow-down.svg'} className='user__btn' />
                         {isOpen && <ul className="user__dropdown">
                             <li className="user__item">
                                 <a href="#" className="user__link">Profile</a>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Board = ({ children }) => {
+const BoardPage = ({ children }) => {
   return (
     <main className='Board'>
       <div className="container">
@@ -12,4 +12,4 @@ const Board = ({ children }) => {
   )
 }
 
-export default Board
+export default BoardPage

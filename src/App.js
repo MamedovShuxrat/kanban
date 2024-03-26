@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 import Header from './components/Header/Header'
-import Board from './Pages/Board'
+import BoardPage from './pages/BoardPage'
 import Footer from './components/Footer/Footer'
-import TaskDetailPage from './Pages/TaskDetailPage'
+import TaskDetailPage from './pages/TaskDetailPage'
 import TasksList from './components/TasksList/TasksList'
 import TaskCreationForm from './components/TaskCreationForm'
 import AddSelectTask from './components/AddSelectTask'
@@ -82,7 +82,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={
-          <Board >
+          <BoardPage >
             <TasksList
               title="Backlog"
               tasks={backlogTasks}>
@@ -116,7 +116,7 @@ function App() {
             >
               <AddSelectTask tasks={inProgressTasks} onMoveItem={onMoveItemHandlerFinished} />
             </TasksList>
-          </Board>
+          </BoardPage>
         } />
         <Route path="/task/:id" element={
           <TaskDetailPage
