@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
-import HeaderComponent from './components/HeaderComponent/HeaderComponent'
+import Header from './components/Header/Header'
 import BoardPage from './pages/BoardPage'
-import Footer from './components/FooterComponent/Footer'
+import Footer from './components/Footer/Footer'
 import TaskDetailPage from './pages/TaskDetailPage'
-import TasksList from './components/TasksListComponent/TasksList'
+import TasksList from './components/TasksList/TasksList'
 import TaskCreationForm from './components/TaskCreationForm'
 import AddSelectTask from './components/AddSelectTask'
 
@@ -79,7 +79,7 @@ function App() {
 
   return (
     <div className="App">
-      <HeaderComponent />
+      <Header />
       <Routes>
         <Route path="/" element={
           <BoardPage >

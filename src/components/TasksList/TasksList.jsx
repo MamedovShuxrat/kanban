@@ -1,6 +1,5 @@
 import React from "react"
-import Task from "../TaskComponent/Task"
-
+import Task from "../Task/Task"
 const TasksList = ({ title, tasks, children }) => {
     return (
         <div className="tasks__list">
