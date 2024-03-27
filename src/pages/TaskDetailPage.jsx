@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, } from 'react-router-dom'
 
 const TaskDetailPage = ({ backlogTasks, readyTasks, inProgressTasks, finishedTasks, onUpdateTask }) => {
   const { id } = useParams()
-
   const task = backlogTasks.find(task => task.id === id)
     || readyTasks.find(task => task.id === id)
     || inProgressTasks.find(task => task.id === id)
@@ -26,11 +25,11 @@ const TaskDetailPage = ({ backlogTasks, readyTasks, inProgressTasks, finishedTas
   }
 
   return (
-    <div className="tasks__list task-center">
+    <div className="tasks__list task-center" >
       <div className="tasks__details_wrapper">
         <h2 className='tasks__details_title'>{task.title}</h2>
         <Link to='/' >
-          <span className='task__datails_exit'>Назад</span>
+          <span className='task__datails_exit'>Exit</span>
         </Link>
       </div>
       {isEditing ? (

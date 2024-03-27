@@ -43,7 +43,7 @@ const TaskCreationForm = ({ onSubmit }) => {
                             type="text"
                             value={newTaskTitle}
                             onChange={(e) => setNewTaskTitle(e.target.value)}
-                            placeholder="Ввидите текст! " />
+                            placeholder="Enter text... " />
                     </label>
                 }
                 {
